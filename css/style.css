@@ -21,12 +21,12 @@ body {
     padding-right: .7rem;
 }
 .navbar-light .navbar-nav .nav-link {
-    color: indianred;
+    color: #1190CB;
     padding-top: .8rem;
 }
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link:hover {
-    color: red;
+    color: lightblue;
 }
 
 /*--- Landing Page ---*/
@@ -39,7 +39,7 @@ body {
     position: absolute;
     top: 38%;
     z-index: 1;
-    color: indianred;
+    color: lightblue;
     text-transform: uppercase;
 }
 .caption h1 {
@@ -59,7 +59,9 @@ body {
     border-radius: 2rem;
     padding: .6rem 1.3rem;
     font-size: 1.1rem;
-    text-shadow: .1rem .1rem .9rem #301f1f;
+    text-shadow: .1rem .1rem .1rem #301f1f;
+    color: lightblue;
+    border-color: lightblue;
 }
 
 /*============ BOOTSTRAP BREAK POINTS:
