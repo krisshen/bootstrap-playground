@@ -211,6 +211,59 @@ hr.socket {
     }
 }
 
+/*--- Rainbow Button ---*/
+.button-anon-pen {
+    text-transform: uppercase;
+    width: 239px;
+    background-color: #1190CB;
+    text-align: center;
+    margin: 0 auto;
+    /*position: relative;*/
+    color: white;
+    text-decoration: none;
+    display: block;
+    top: 45vh;
+    font-weight: normal;
+    border-radius: 6px;
+    overflow: hidden;
+    /*-webkit-animation: play 1.6s ease-in infinite;*/
+}
+
+.button-anon-pen:hover {
+    background-image: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+    -webkit-animation: play 1.6s ease-in infinite;
+    text-decoration: none;
+    color: white;
+}
+
+.button-anon-pen span {
+    padding: .6rem 1.3rem;
+    font-size: 1.2rem;
+    display: block;
+
+}
+
+@-webkit-keyframes play {
+    0% {
+        background-position: 0px;
+    }
+    20% {
+        background-position: -110px;
+    }
+    35% {
+        background-position: -180px;
+    }
+    50% {
+        background-position: -210px;
+    }
+    80% {
+        background-position: -350px;
+    }
+    100% {
+        background-position: -390px;
+    }
+}
+
 /*============ BOOTSTRAP BREAK POINTS:
 
 Extra small (xs) devices (portrait phones, less than 576px)
