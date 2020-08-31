@@ -2,7 +2,7 @@
 
 A place to get familiar with Bootstarp 4.
 
-Page samples
+Sample Pages
 
 - [Art Maker](https://krisshen.github.io/bootstrap-playground/)
 - [Loife (coming soon...)]()
