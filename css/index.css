@@ -1,6 +1,6 @@
 .card-flyer {
     background: #FFFFFF;
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     -webkit-transition: all 0.2s ease-in;
     -moz-transition: all 0.2s ease-in;
     -ms-transition: all 0.2s ease-in;
@@ -42,5 +42,5 @@
     -ms-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
-    margin-top: 50px;
+    /*margin-top: 50px;*/
 }
