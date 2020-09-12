@@ -41,17 +41,6 @@
   background-size: 100vh 100vm;
 }
 
-.loife1:hover ~ .landing-inner {
-  opacity: 1;
-  transition: all 0.9s ease-in-out;
-  -webkit-transition: all 0.9s ease-in-out;
-  -moz-transition: all 0.9s ease-in-out;
-  -o-transition: all 0.9s ease-in-out;
-  -ms-transition: all 0.9s ease-in-out;
-  background-image: url("../loife/img/loife1.jpeg");
-  background-size: 100vh 100vm;
-}
-
 .loife2:hover ~ .landing-inner {
   opacity: 1;
   transition: all 0.9s ease-in-out;

@@ -49,8 +49,6 @@
   }
 }
 
-@include loifeHover(1, getLoifeImageFullPath(1));
-
 @for $i from 1 through 8 {
   @include loifeHover($i, getLoifeImageFullPath($i));
 }
