@@ -1,124 +1,132 @@
 .cards-container {
-    width: 100%;
-    max-width: 100%;
-    position: absolute;
-    margin: 10px;
-    z-index: 1;
-    color: lightblue;
-    text-transform: uppercase;
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  margin: 10px;
+  z-index: 1;
+  color: lightblue;
+  text-transform: uppercase;
 }
 
 .landing-inner {
-    position: fixed;
-    display: table;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center center;
-    /*-webkit-transform: translateZ(0);*/
-    /*transform: translateZ(0);*/
-    /*will-change: transform;*/
-    opacity: 0.1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url("../loife/img/background.jpeg");
+  position: fixed;
+  display: table;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/background.jpeg");
 }
 
 .card {
-    margin: 10px;
+  margin: 10px;
 }
 
-/*.card:hover ~ .landing-inner {*/
-/*    opacity: 1;*/
-/*    transition: all .9s ease-in-out;*/
-/*    -webkit-transition: all .9s ease-in-out;*/
-/*    -moz-transition: all .9s ease-in-out;*/
-/*    -o-transition: all .9s ease-in-out;*/
-/*    -ms-transition: all .9s ease-in-out;*/
-/*}*/
+.loife1:hover ~ .landing-inner {
+  opacity: 1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/loife1.jpeg");
+  background-size: 100vh 100vm;
+}
 
 .loife1:hover ~ .landing-inner {
-    opacity: 1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url("../loife/img/loife1.jpeg");
-    background-size: 100vh 100vm;
+  opacity: 1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/loife1.jpeg");
+  background-size: 100vh 100vm;
 }
 
 .loife2:hover ~ .landing-inner {
-    opacity: 1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url("../loife/img/loife2.jpeg");
+  opacity: 1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/loife2.jpeg");
+  background-size: 100vh 100vm;
 }
 
 .loife3:hover ~ .landing-inner {
-    opacity: 1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url("../loife/img/loife3.jpeg");
+  opacity: 1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/loife3.jpeg");
+  background-size: 100vh 100vm;
 }
 
 .loife4:hover ~ .landing-inner {
-    opacity: 1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url("../loife/img/loife4.jpeg");
+  opacity: 1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/loife4.jpeg");
+  background-size: 100vh 100vm;
 }
 
 .loife5:hover ~ .landing-inner {
-    opacity: 1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url("../loife/img/loife5.jpeg");
+  opacity: 1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/loife5.jpeg");
+  background-size: 100vh 100vm;
 }
 
 .loife6:hover ~ .landing-inner {
-    opacity: 1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url("../loife/img/loife6.jpeg");
+  opacity: 1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/loife6.jpeg");
+  background-size: 100vh 100vm;
 }
 
 .loife7:hover ~ .landing-inner {
-    opacity: 1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url("../loife/img/loife7.jpeg");
+  opacity: 1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/loife7.jpeg");
+  background-size: 100vh 100vm;
 }
 
 .loife8:hover ~ .landing-inner {
-    opacity: 1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url("../loife/img/loife8.jpeg");
+  opacity: 1;
+  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  background-image: url("../loife/img/loife8.jpeg");
+  background-size: 100vh 100vm;
 }
+
+/*# sourceMappingURL=loife.css.map */
