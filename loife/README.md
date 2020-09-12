@@ -6,7 +6,7 @@ This website is still working in progress
 ## To Do
 
 - Refactor
-- Sass
+- Sass (done)
 - No javascript
-- Play page
+- Play page (wip)
 
