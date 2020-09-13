@@ -30,7 +30,7 @@
   margin: 10px;
 }
 
-.loife1:hover ~ .landing-inner {
+#loife1:hover ~ .landing-inner {
   opacity: 1;
   transition: all 0.9s ease-in-out;
   -webkit-transition: all 0.9s ease-in-out;
@@ -41,7 +41,7 @@
   background-size: 100vh 100vm;
 }
 
-.loife2:hover ~ .landing-inner {
+#loife2:hover ~ .landing-inner {
   opacity: 1;
   transition: all 0.9s ease-in-out;
   -webkit-transition: all 0.9s ease-in-out;
@@ -52,7 +52,7 @@
   background-size: 100vh 100vm;
 }
 
-.loife3:hover ~ .landing-inner {
+#loife3:hover ~ .landing-inner {
   opacity: 1;
   transition: all 0.9s ease-in-out;
   -webkit-transition: all 0.9s ease-in-out;
@@ -63,7 +63,7 @@
   background-size: 100vh 100vm;
 }
 
-.loife4:hover ~ .landing-inner {
+#loife4:hover ~ .landing-inner {
   opacity: 1;
   transition: all 0.9s ease-in-out;
   -webkit-transition: all 0.9s ease-in-out;
@@ -74,7 +74,7 @@
   background-size: 100vh 100vm;
 }
 
-.loife5:hover ~ .landing-inner {
+#loife5:hover ~ .landing-inner {
   opacity: 1;
   transition: all 0.9s ease-in-out;
   -webkit-transition: all 0.9s ease-in-out;
@@ -85,7 +85,7 @@
   background-size: 100vh 100vm;
 }
 
-.loife6:hover ~ .landing-inner {
+#loife6:hover ~ .landing-inner {
   opacity: 1;
   transition: all 0.9s ease-in-out;
   -webkit-transition: all 0.9s ease-in-out;
@@ -96,7 +96,7 @@
   background-size: 100vh 100vm;
 }
 
-.loife7:hover ~ .landing-inner {
+#loife7:hover ~ .landing-inner {
   opacity: 1;
   transition: all 0.9s ease-in-out;
   -webkit-transition: all 0.9s ease-in-out;
@@ -107,7 +107,7 @@
   background-size: 100vh 100vm;
 }
 
-.loife8:hover ~ .landing-inner {
+#loife8:hover ~ .landing-inner {
   opacity: 1;
   transition: all 0.9s ease-in-out;
   -webkit-transition: all 0.9s ease-in-out;

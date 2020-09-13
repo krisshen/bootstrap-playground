@@ -37,7 +37,7 @@
 }
 
 @mixin loifeHover($loifeCLass, $imageFullPath) {
-  .loife#{$loifeCLass}:hover ~ .landing-inner {
+  #loife#{$loifeCLass}:hover ~ .landing-inner {
     opacity: 1;
     transition: all .9s ease-in-out;
     -webkit-transition: all .9s ease-in-out;

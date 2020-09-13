@@ -1,3 +1,7 @@
+.card-flyer.loife {
+    width: 18rem;
+}
+
 .card-flyer {
     background: #FFFFFF;
     /*margin-top: 50px;*/
@@ -7,7 +11,6 @@
     -o-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
-    width: 18rem;
 }
 
 .card-flyer .image-box {
