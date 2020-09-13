@@ -118,4 +118,8 @@
   background-size: 100vh 100vm;
 }
 
+.modal-content {
+  height: 60vh;
+}
+
 /*# sourceMappingURL=loife.css.map */

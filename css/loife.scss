@@ -52,3 +52,7 @@
 @for $i from 1 through 8 {
   @include loifeHover($i, getLoifeImageFullPath($i));
 }
+
+.modal-content {
+  height: 60vh;
+}
