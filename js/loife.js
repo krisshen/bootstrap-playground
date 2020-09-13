@@ -11,13 +11,15 @@ $(document).ready(function (){
         loife8: "https://www.youtube.com/embed/jYdjxKmsK9I",
     };
 
-    $('.modal').on('hide.bs.modal', function() {
+    let modal = $('.modal');
+
+    modal.on('hide.bs.modal', function() {
         // let memory = $(this).html();
         // $(this).html(memory);
         $("#videoIframe").attr('src', '');
     })
 
-    $('.modal').on('show.bs.modal', function (e) {
+    modal.on('show.bs.modal', function (e) {
         $("#videoIframe").attr('src', videos[`${e.relatedTarget.id}`]);
     })
 });

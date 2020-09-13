@@ -1,12 +1,8 @@
 # Welcome to Loife
 
-This website is still working in progress
+This website is built with:
 
-
-## To Do
-
-- Refactor
+- Bootstrap v4.5.2
 - Sass (done)
-- No javascript
-- Play page (wip)
-
+- Play page (done)
+- A bit of Javascript
