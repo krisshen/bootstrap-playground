@@ -6,3 +6,9 @@ This website is built with:
 - Sass (done)
 - Play page (done)
 - A bit of Javascript
+
+
+## Tasks
+- Get data from YouTube
+- Make lofie read data file
+- Use Github action to automation this
