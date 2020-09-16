@@ -10,5 +10,7 @@ This website is built with:
 
 ## Tasks
 - Get data from YouTube
+- Take screenshot
+- Same links and screenshots to local data file
 - Make lofie read data file
 - Use Github action to automation this
