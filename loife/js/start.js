@@ -17,9 +17,11 @@ const videosPerChannel = 20;
 const thumbnailDownloadPath = './loife/img/thumbnail/';
 const fullImgDownloadPath = './loife/img/full/';
 const thumbnailImgUrlTemplate = 'https://i.ytimg.com/vi/${image}/hqdefault.jpg';
-const videoUrlTemplate = 'https://www.youtube.com/watch?v=${videoId}&t=20';
+const videoUrlTemplate = 'https://www.youtube.com/watch?v=${videoUrlId}&t=20';
+const videoEmbedUrlTemplate = 'https://www.youtube.com/embed/${videoUrlId}';
 let thumbnailImgUrl
 let channelUrl
+let data = "let videos = {\n";
 
 const download = async (url, path, callback) => {
     request.head(url, (err, res, body) => {
@@ -29,7 +31,7 @@ const download = async (url, path, callback) => {
     })
 }
 
-function getVideoId(thumbnailImgUrl) {
+function getVideoUrlId(thumbnailImgUrl) {
     return thumbnailImgUrl.split('?')[0].split('/')[4];
 }
 
@@ -39,8 +41,8 @@ async function downloadThumbnail(thumbnailImgUrl, channelId, thumbnailId) {
     });
 }
 
-async function downloadFullImage(page, videoId, channelId, imageId) {
-    let videoUrl = videoUrlTemplate.replace('${videoId}', videoId);
+async function downloadFullImage(page, videoUrlId, channelId, videoId) {
+    let videoUrl = videoUrlTemplate.replace('${videoUrlId}', videoUrlId);
     console.log(`videoUrl: ${videoUrl}`);
 
     await page.goto(videoUrl, {waitUntil: 'networkidle2'});
@@ -57,16 +59,14 @@ async function downloadFullImage(page, videoId, channelId, imageId) {
     let skipAdsButton1 = await page.$x("//div[contains(text(), 'Skip Ads')]");
     let skipAdsButton2 = await page.$x("//div[contains(text(), 'Skip ad')]");
     if (skipAdsButton1.length > 0 || skipAdsButton2.length > 0) {
-        // await page.screenshot({path: `${fullImgDownloadPath}${channelId}_${imageId}_ad.jpeg`});
+        // await page.screenshot({path: `${fullImgDownloadPath}${channelId}_${videoId}_ad.jpeg`});
         await page.waitForTimeout(10000);
     }
 
-    await video.screenshot({path: `${fullImgDownloadPath}${channelId}_${imageId}.jpeg`});
+    await video.screenshot({path: `${fullImgDownloadPath}${channelId}_${videoId}.jpeg`});
 }
 
 async function run() {
-
-    let channelId = 1;
 
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox',],
@@ -80,8 +80,9 @@ async function run() {
         blocker.enableBlockingInPage(page);
     });
 
+    let channelId = 1;
     for (const channel of channels) {
-        let videoIds = [];
+        let videoUrlIds = [];
         channelUrl = channelUrlTemplate.replace('${channel}', channel);
         console.log(`checking at channel: ${channelUrl}`);
         await page.goto(channelUrl, {waitUntil: 'networkidle2'});
@@ -97,7 +98,7 @@ async function run() {
             count += 1
             await downloadThumbnail(thumbnailImgUrl, channelId, count);
 
-            videoIds.push(getVideoId(thumbnailImgUrl));
+            videoUrlIds.push(getVideoUrlId(thumbnailImgUrl));
 
             if (count === videosPerChannel) {
                 console.log('complete one channel');
@@ -106,12 +107,22 @@ async function run() {
         }
 
         // download full images
-        for (const [i, videoId] of videoIds.entries()) {
-            await downloadFullImage(page, videoId, channelId, i + 1);
+        for (const [index, videoUrlId] of videoUrlIds.entries()) {
+            // await downloadFullImage(page, videoUrlId, channelId, index + 1);
+        }
+
+        // append to data
+        for (const [index, videoUrlId] of videoUrlIds.entries()) {
+            data += `    ${channelId}_${index + 1}: "${videoEmbedUrlTemplate.replace('${videoUrlId}', videoUrlId)}",\n`;
         }
 
         channelId += 1;
     }
+
+    // write data to loife_videos.js
+    data += "};";
+    console.log(data);
+    fs.writeFile('./loife/data/loife_videos.js', data, () => {});
 
     await browser.close();
     console.log('done!')
