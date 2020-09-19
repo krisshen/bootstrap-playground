@@ -2,8 +2,9 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import request from 'request';
 import pkg from '@cliqz/adblocker-puppeteer';
-const { PuppeteerBlocker } = pkg;
 import fetch from 'cross-fetch';
+
+const {PuppeteerBlocker} = pkg;
 
 const channels = [
     'channel/UCq22aK0t0mrOEq676Be4ezw',
@@ -41,8 +42,26 @@ async function downloadThumbnail(thumbnailImgUrl, channelId, thumbnailId) {
 async function downloadFullImage(page, videoId, channelId, imageId) {
     let videoUrl = videoUrlTemplate.replace('${videoId}', videoId);
     console.log(`videoUrl: ${videoUrl}`);
+
     await page.goto(videoUrl, {waitUntil: 'networkidle2'});
-    await page.screenshot({path: `${fullImgDownloadPath}${channelId}_${imageId}.jpeg`});
+
+    const video = await page.$('.html5-video-player');
+    await page.evaluate(() => {
+        // Hide youtube player controls.
+        let dom = document.querySelector('.ytp-chrome-bottom')
+        dom.style.display = 'none'
+    })
+
+    // check white screen ads, couldn't find a way to click that skip ad button,
+    // will wait for it for now.
+    let skipAdsButton1 = await page.$x("//div[contains(text(), 'Skip Ads')]");
+    let skipAdsButton2 = await page.$x("//div[contains(text(), 'Skip ad')]");
+    if (skipAdsButton1.length > 0 || skipAdsButton2.length > 0) {
+        // await page.screenshot({path: `${fullImgDownloadPath}${channelId}_${imageId}_ad.jpeg`});
+        await page.waitForTimeout(10000);
+    }
+
+    await video.screenshot({path: `${fullImgDownloadPath}${channelId}_${imageId}.jpeg`});
 }
 
 async function run() {
@@ -50,7 +69,8 @@ async function run() {
     let channelId = 1;
 
     const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox',]
+        args: ['--no-sandbox', '--disable-setuid-sandbox',],
+        // headless: false
     })
     console.log('start...')
     const page = await browser.newPage();
