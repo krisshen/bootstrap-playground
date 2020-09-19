@@ -1,10 +1,10 @@
 import puppeteer from 'puppeteer';
 import fs from 'fs';
 import request from 'request';
-import pkg from '@cliqz/adblocker-puppeteer';
+import adBlocker from '@cliqz/adblocker-puppeteer';
 import fetch from 'cross-fetch';
 
-const {PuppeteerBlocker} = pkg;
+const {PuppeteerBlocker} = adBlocker;
 
 const channels = [
     'channel/UCq22aK0t0mrOEq676Be4ezw',
@@ -107,7 +107,7 @@ async function run() {
 
         // download full images
         for (const [i, videoId] of videoIds.entries()) {
-            await downloadFullImage(page, videoId, channelId, i);
+            await downloadFullImage(page, videoId, channelId, i + 1);
         }
 
         channelId += 1;
