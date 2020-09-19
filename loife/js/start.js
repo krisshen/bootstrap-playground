@@ -1,6 +1,9 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-const request = require('request');
+import puppeteer from 'puppeteer';
+import fs from 'fs';
+import request from 'request';
+import pkg from '@cliqz/adblocker-puppeteer';
+const { PuppeteerBlocker } = pkg;
+import fetch from 'cross-fetch';
 
 const channels = [
     'channel/UCq22aK0t0mrOEq676Be4ezw',
@@ -52,6 +55,10 @@ async function run() {
     console.log('start...')
     const page = await browser.newPage();
     await page.setViewport({width: 1920, height: 1080})
+
+    PuppeteerBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
+        blocker.enableBlockingInPage(page);
+    });
 
     for (const channel of channels) {
         let videoIds = [];
