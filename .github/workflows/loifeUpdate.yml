@@ -1,0 +1,21 @@
+name: Loife Update
+
+on:
+  schedule:
+    - cron:  '0 8 * * *' # every day at 8am
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.2
+      
+      - name: Build
+        run: npm instal
+
+      - name: Update
+        run: npm run start
+
+      - uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
