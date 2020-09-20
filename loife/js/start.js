@@ -108,7 +108,7 @@ async function run() {
 
         // download full images
         for (const [index, videoUrlId] of videoUrlIds.entries()) {
-            // await downloadFullImage(page, videoUrlId, channelId, index + 1);
+            await downloadFullImage(page, videoUrlId, channelId, index + 1);
         }
 
         // append to data
