@@ -4,14 +4,22 @@ This website is built with:
 
 - Bootstrap v4.5.2
 - Sass 
-- Play page 
 - Javascript (JQuery)
+- Puppeteer
 
+## What it can do
+
+- Scrape YouTube videos (by GitHub actions), save thumbnails, video screenshots and urls to this GitHub repo
+- Present thumbnails in a static page, hover to show full screenshot in background, click
+to show play modal
+- Refresh page to randomly pick up 8 to display (around 60 in total for now)
+- No server side, pure front end logic
 
 ## Tasks
 - Get data from YouTube (done)
 - Take screenshot (done)
 - Same links and screenshots to local data file (done)
 - Make lofie read data file (done)
-- Use Github action to automation this
+- Use Github action to automate this (done)
 - Fix back and white screenshots
+- Resolve performance issue by using local storage
