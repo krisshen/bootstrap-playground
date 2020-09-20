@@ -113,7 +113,7 @@ async function run() {
 
         // append to data
         for (const [index, videoUrlId] of videoUrlIds.entries()) {
-            data += `    ${channelId}_${index + 1}: "${videoEmbedUrlTemplate.replace('${videoUrlId}', videoUrlId)}",\n`;
+            data += `    "${channelId}_${index + 1}": "${videoEmbedUrlTemplate.replace('${videoUrlId}', videoUrlId)}",\n`;
         }
 
         channelId += 1;

@@ -36,21 +36,32 @@
   margin: 10px;
 }
 
-@mixin loifeHover($loifeCLass, $imageFullPath) {
-  #loife#{$loifeCLass}:hover ~ .landing-inner {
-    opacity: 1;
-    transition: all .9s ease-in-out;
-    -webkit-transition: all .9s ease-in-out;
-    -moz-transition: all .9s ease-in-out;
-    -o-transition: all .9s ease-in-out;
-    -ms-transition: all .9s ease-in-out;
-    background-image: url($imageFullPath);
-    background-size: 100vh 100vm;
-  }
-}
+//@mixin loifeHover($loifeCLass, $imageFullPath) {
+//  .loife#{$loifeCLass}:hover ~ .landing-inner {
+//    opacity: 1;
+//    transition: all .9s ease-in-out;
+//    -webkit-transition: all .9s ease-in-out;
+//    -moz-transition: all .9s ease-in-out;
+//    -o-transition: all .9s ease-in-out;
+//    -ms-transition: all .9s ease-in-out;
+//    content: attr(id);
+//    background-image: url($imageFullPath);
+//    background-size: 100vh 100vm;
+//  }
+//}
+//
+//@for $i from 1 through 8 {
+//  @include loifeHover($i, getLoifeImageFullPath($i));
+//}
 
-@for $i from 1 through 8 {
-  @include loifeHover($i, getLoifeImageFullPath($i));
+.landing-inner {
+  opacity: 1;
+  transition: all .9s ease-in-out;
+  -webkit-transition: all .9s ease-in-out;
+  -moz-transition: all .9s ease-in-out;
+  -o-transition: all .9s ease-in-out;
+  -ms-transition: all .9s ease-in-out;
+  background-size: 100vh 100vm;
 }
 
 .modal-content {

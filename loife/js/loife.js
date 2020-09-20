@@ -27,12 +27,24 @@ function getImageIds(numbers) {
 
 $(document).ready(function () {
 
+    // generate random numbers for channels and videos
     let randomNumbers = generateRandomNumbers(8);
-    // let randomNumbers = [1, 11, 15, 20, 21, 40, 41, 60];
-    console.log(randomNumbers);
+    // let randomNumbers = [1, 11, 15, 20, 21, 40, 41, 60]; // for test
+    // console.log(randomNumbers);
 
     let imageIds = getImageIds(randomNumbers);
-    console.log(imageIds);
+    // console.log(imageIds);
+
+    // get each loife element and set id, thumbnail and hover images
+    let loifeElements = $(".loife")
+    loifeElements.each(function (i) {
+        this.id = imageIds[i];
+        this.querySelector('img').src = `img/thumbnail/${imageIds[i]}.jpeg`;
+
+        $(this).hover(() => {
+            $(".landing-inner").css('background-image', `url('img/full/${imageIds[i]}.jpeg')`);
+        });
+    });
 
     let modal = $('.modal');
 
