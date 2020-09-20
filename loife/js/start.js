@@ -60,7 +60,8 @@ async function downloadFullImage(page, videoUrlId, channelId, videoId) {
     let skipAdsButton2 = await page.$x("//div[contains(text(), 'Skip ad')]");
     if (skipAdsButton1.length > 0 || skipAdsButton2.length > 0) {
         // await page.screenshot({path: `${fullImgDownloadPath}${channelId}_${videoId}_ad.jpeg`});
-        await page.waitForTimeout(10000);
+        console.log("got ads, waiting for 20s");
+        await page.waitForTimeout(20000);
     }
 
     await video.screenshot({path: `${fullImgDownloadPath}${channelId}_${videoId}.jpeg`});
