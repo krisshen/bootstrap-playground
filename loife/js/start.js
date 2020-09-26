@@ -45,7 +45,7 @@ async function downloadFullImage(page, videoUrlId, channelId, videoId) {
     let videoUrl = videoUrlTemplate.replace('${videoUrlId}', videoUrlId);
     console.log(`videoUrl: ${videoUrl}`);
 
-    await page.goto(videoUrl, {waitUntil: 'networkidle2'});
+    await page.goto(videoUrl, {waitUntil: 'domcontentloaded'});
 
     const video = await page.$('.html5-video-player');
     await page.evaluate(() => {
