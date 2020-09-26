@@ -79,7 +79,9 @@ async function downloadFullImage(page, videoUrlId, channelId, videoId) {
     await page.evaluate(() => {
         // Hide youtube player controls.
         let dom = document.querySelector('.ytp-chrome-bottom')
-        dom.style.display = 'none'
+        if (dom) {
+            dom.style.display = 'none'
+        }
     })
 
     await skipAds(page);
