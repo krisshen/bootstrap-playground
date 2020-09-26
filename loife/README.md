@@ -21,5 +21,5 @@ to show play modal
 - Same links and screenshots to local data file (done)
 - Make lofie read data file (done)
 - Use Github action to automate this (done)
-- Fix back and white screenshots
+- Fix black and white screenshots
 - Resolve performance issue by using local storage
