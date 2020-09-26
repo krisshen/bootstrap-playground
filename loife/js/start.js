@@ -74,7 +74,7 @@ async function downloadFullImage(page, videoUrlId, channelId, videoId) {
     console.log(`videoUrl: ${videoUrl}`);
 
     await page.goto(videoUrl, {waitUntil: 'networkidle2'});
-
+    await page.waitForSelector('.html5-video-player');
     const video = await page.$('.html5-video-player');
     await page.evaluate(() => {
         // Hide youtube player controls.
