@@ -41,11 +41,39 @@ async function downloadThumbnail(thumbnailImgUrl, channelId, thumbnailId) {
     });
 }
 
+async function skipAds(page) {
+    let skipAdsButtonSelector = '.ytp-ad-skip-button.ytp-button';
+
+    let skipAdsButton;
+
+    // await page.waitForSelector(button, {timeout: 3000})
+    await page.waitForTimeout(1000);
+    skipAdsButton = await page.$(skipAdsButtonSelector);
+    if (skipAdsButton !== null) {
+        console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
+        skipAdsButton.click();
+        console.log(`button clicked.`);
+        await page.waitForTimeout(2000);
+    } else {
+        console.log(`didn't see button element: ${skipAdsButtonSelector}`)
+    }
+
+    // check white screen ads, couldn't find a way to click that skip ad button,
+    // will wait for it for now.
+    // let skipAdsButton1 = await page.$x("//div[contains(text(), 'Skip Ads')]");
+    // let skipAdsButton2 = await page.$x("//div[contains(text(), 'Skip ad')]");
+    // if (skipAdsButton1.length > 0 || skipAdsButton2.length > 0) {
+    //     // await page.screenshot({path: `${fullImgDownloadPath}${channelId}_${videoId}_ad.jpeg`});
+    //     console.log("got ads, waiting for 20s");
+    //     await page.waitForTimeout(20000);
+    // }
+}
+
 async function downloadFullImage(page, videoUrlId, channelId, videoId) {
     let videoUrl = videoUrlTemplate.replace('${videoUrlId}', videoUrlId);
     console.log(`videoUrl: ${videoUrl}`);
 
-    await page.goto(videoUrl, {waitUntil: 'domcontentloaded'});
+    await page.goto(videoUrl, {waitUntil: 'networkidle2'});
 
     const video = await page.$('.html5-video-player');
     await page.evaluate(() => {
@@ -54,15 +82,7 @@ async function downloadFullImage(page, videoUrlId, channelId, videoId) {
         dom.style.display = 'none'
     })
 
-    // check white screen ads, couldn't find a way to click that skip ad button,
-    // will wait for it for now.
-    let skipAdsButton1 = await page.$x("//div[contains(text(), 'Skip Ads')]");
-    let skipAdsButton2 = await page.$x("//div[contains(text(), 'Skip ad')]");
-    if (skipAdsButton1.length > 0 || skipAdsButton2.length > 0) {
-        // await page.screenshot({path: `${fullImgDownloadPath}${channelId}_${videoId}_ad.jpeg`});
-        console.log("got ads, waiting for 20s");
-        await page.waitForTimeout(20000);
-    }
+    await skipAds(page);
 
     await video.screenshot({path: `${fullImgDownloadPath}${channelId}_${videoId}.jpeg`});
 }
@@ -123,7 +143,8 @@ async function run() {
     // write data to loife_videos.js
     data += "};";
     console.log(data);
-    fs.writeFile('./loife/data/loife_videos.js', data, () => {});
+    fs.writeFile('./loife/data/loife_videos.js', data, () => {
+    });
 
     await browser.close();
     console.log('done!')
