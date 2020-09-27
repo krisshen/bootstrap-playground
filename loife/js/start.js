@@ -71,10 +71,15 @@ async function downloadFullImage(page, videoUrlId, channelId, videoId) {
     await page.waitForSelector('.html5-video-player');
     const video = await page.$('.html5-video-player');
     await page.evaluate(() => {
-        // Hide youtube player controls.
-        let dom = document.querySelector('.ytp-chrome-bottom')
-        if (dom !== null) {
-            dom.style.display = 'none'
+        // hide youtube player controls.
+        let playerButtons = document.querySelector('.ytp-chrome-bottom');
+        if (playerButtons !== null) {
+            playerButtons.style.display = 'none';
+        }
+        // hide branding image
+        let brandingImg = document.querySelector('.branding-img');
+        if (brandingImg !== null) {
+            brandingImg.style.display = 'none';
         }
     })
 
