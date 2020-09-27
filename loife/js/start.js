@@ -16,7 +16,6 @@ const channelUrlTemplate = 'https://www.youtube.com/${channel}/videos';
 const videosPerChannel = 20;
 const thumbnailDownloadPath = './loife/img/thumbnail/';
 const fullImgDownloadPath = './loife/img/full/';
-const thumbnailImgUrlTemplate = 'https://i.ytimg.com/vi/${image}/hqdefault.jpg';
 const videoUrlTemplate = 'https://www.youtube.com/watch?v=${videoUrlId}&t=20';
 const videoEmbedUrlTemplate = 'https://www.youtube.com/embed/${videoUrlId}';
 let thumbnailImgUrl
@@ -84,6 +83,17 @@ async function downloadFullImage(page, videoUrlId, channelId, videoId) {
     await video.screenshot({path: `${fullImgDownloadPath}${channelId}_${videoId}.jpeg`});
 }
 
+/**
+ * Live steam thumbnailImgUrl has 'hqdefault_live.jpg'
+ * sample: https://i.ytimg.com/vi/9Q_APT73zDQ/hqdefault_live.jpg?xxx
+ *
+ * @param thumbnailImgUrl
+ * @returns {Promise<boolean>}
+ */
+async function isLiveStream(thumbnailImgUrl) {
+    return thumbnailImgUrl.includes('_live');
+}
+
 async function run() {
 
     const browser = await puppeteer.launch({
@@ -112,6 +122,9 @@ async function run() {
         // download thumbnails
         for (const thumbnail of thumbnails) {
             thumbnailImgUrl = await thumbnail.$eval('img', thumbnailImg => thumbnailImg.src);
+
+            // skip Live streams as puppeteer doesn't support it at the moment
+            if (await isLiveStream(thumbnailImgUrl)) continue;
 
             count += 1
             await downloadThumbnail(thumbnailImgUrl, channelId, count);
