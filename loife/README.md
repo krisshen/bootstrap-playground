@@ -23,3 +23,4 @@ to show play modal
 - Use Github action to automate this (done)
 - Fix black and white screenshots (done)
 - Resolve performance issue by preloading all images (done)
+- Moved tasks tracking to [Loife project page](https://github.com/krisshen/bootstrap-playground/projects/1)
