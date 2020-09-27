@@ -31,6 +31,12 @@ const download = async (url, path, callback) => {
     })
 }
 
+/**
+ * crop thumbnailImgUrl and return video id.
+ *
+ * @param thumbnailImgUrl, sample: https://i.ytimg.com/vi/mPOLrO68sUE/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLA_NqYyDL3b-CsfxWyNdLjgtOQZOQ
+ * @returns {string}: 'mPOLrO68sUE' is what it returns in this case
+ */
 function getVideoUrlId(thumbnailImgUrl) {
     return thumbnailImgUrl.split('?')[0].split('/')[4];
 }
