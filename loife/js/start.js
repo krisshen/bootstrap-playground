@@ -46,27 +46,16 @@ async function skipAds(page) {
 
     let skipAdsButton;
 
-    // await page.waitForSelector(button, {timeout: 3000})
     await page.waitForTimeout(1000);
     skipAdsButton = await page.$(skipAdsButtonSelector);
     if (skipAdsButton !== null) {
-        console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
+        // console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
         skipAdsButton.click();
-        console.log(`button clicked.`);
+        // console.log(`button clicked.`);
         await page.waitForTimeout(2000);
     } else {
-        console.log(`didn't see button element: ${skipAdsButtonSelector}`)
+        // console.log(`didn't see button element: ${skipAdsButtonSelector}`)
     }
-
-    // check white screen ads, couldn't find a way to click that skip ad button,
-    // will wait for it for now.
-    // let skipAdsButton1 = await page.$x("//div[contains(text(), 'Skip Ads')]");
-    // let skipAdsButton2 = await page.$x("//div[contains(text(), 'Skip ad')]");
-    // if (skipAdsButton1.length > 0 || skipAdsButton2.length > 0) {
-    //     // await page.screenshot({path: `${fullImgDownloadPath}${channelId}_${videoId}_ad.jpeg`});
-    //     console.log("got ads, waiting for 20s");
-    //     await page.waitForTimeout(20000);
-    // }
 }
 
 async function downloadFullImage(page, videoUrlId, channelId, videoId) {
