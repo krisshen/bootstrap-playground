@@ -22,4 +22,4 @@ to show play modal
 - Make lofie read data file (done)
 - Use Github action to automate this (done)
 - Fix black and white screenshots (done)
-- Resolve performance issue by preloading all images or using local storage
+- Resolve performance issue by preloading all images (done)
