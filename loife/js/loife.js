@@ -41,8 +41,14 @@ $(document).ready(function () {
         this.id = imageIds[i];
         this.querySelector('img').src = `img/thumbnail/${imageIds[i]}.jpeg`;
 
+        // preload images
+        // reference: https://stackoverflow.com/questions/3646036/preloading-images-with-javascript
+        let url = `img/full/${imageIds[i]}.jpeg`;
+        let img = new Image();
+        img.src = url;
+
         $(this).hover(() => {
-            $(".landing-inner").css('background-image', `url('img/full/${imageIds[i]}.jpeg')`);
+            $(".landing-inner").css('background-image', `url(${url})`);
         });
     });
 
