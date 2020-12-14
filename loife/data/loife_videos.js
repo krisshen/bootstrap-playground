@@ -1,7 +1,7 @@
 let videos = {
-    "1_1": "https://www.youtube.com/embed/EK5rnGeEmTM",
-    "1_2": "https://www.youtube.com/embed/dr4gTvgQXjs",
-    "1_3": "https://www.youtube.com/embed/zO330xrRPoM",
+    "1_1": "https://www.youtube.com/embed/ikX_HYEfljA",
+    "1_2": "https://www.youtube.com/embed/EK5rnGeEmTM",
+    "1_3": "https://www.youtube.com/embed/dr4gTvgQXjs",
     "1_4": "https://www.youtube.com/embed/rcRQ02upjhM",
     "1_5": "https://www.youtube.com/embed/tDrXuN9jWOk",
     "1_6": "https://www.youtube.com/embed/iwfXOTomAug",
