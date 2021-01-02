@@ -1,6 +1,6 @@
 let videos = {
-    "1_1": "https://www.youtube.com/embed/tCk_nZVOJuQ",
-    "1_2": "https://www.youtube.com/embed/IGb19558Pfs",
+    "1_1": "https://www.youtube.com/embed/7tCONAwsCuQ",
+    "1_2": "https://www.youtube.com/embed/tCk_nZVOJuQ",
     "1_3": "https://www.youtube.com/embed/7U5XWVRCULQ",
     "1_4": "https://www.youtube.com/embed/BrKxMAs3xEw",
     "1_5": "https://www.youtube.com/embed/Uk78-uAf5Vg",
