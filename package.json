@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/krisshen/bootstrap-playground#readme",
   "dependencies": {
-    "@cliqz/adblocker-puppeteer": "^1.18.3",
+    "@cliqz/adblocker-puppeteer": "^1.20.6",
     "cross-fetch": "^3.0.6",
-    "puppeteer": "^5.3.0",
+    "puppeteer": "^5.5.0",
     "request": "^2.88.2"
   }
 }

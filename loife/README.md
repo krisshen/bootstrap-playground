@@ -17,8 +17,8 @@ to show play modal
 
 ## Tasks
 - Get data from YouTube (done)
-- Take screenshot (done)
-- Same links and screenshots to local data file (done)
+- Take screenshots (done)
+- Save links and screenshots to local data file (done)
 - Make lofie read data file (done)
 - Use Github action to automate this (done)
 - Fix black and white screenshots (done)

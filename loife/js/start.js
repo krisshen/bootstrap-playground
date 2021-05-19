@@ -42,19 +42,19 @@ function getVideoUrlId(thumbnailImgUrl) {
 
 async function downloadThumbnail(thumbnailImgUrl, channelId, thumbnailId) {
     await download(thumbnailImgUrl, thumbnailDownloadPath + channelId + '_' + thumbnailId + '.jpeg', () => {
-        console.log(`✅ Download Done!`);
+        console.log(`✅ Thumbnail downloaded!`);
     });
 }
 
 async function skipAds(page) {
     let skipAdsButtonSelector = '.ytp-ad-skip-button.ytp-button';
-
     let skipAdsButton;
 
     await page.waitForTimeout(1000);
     skipAdsButton = await page.$(skipAdsButtonSelector);
     if (skipAdsButton !== null) {
         // console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
+        await page.waitForTimeout(7000);
         skipAdsButton.click();
         // console.log(`button clicked.`);
         await page.waitForTimeout(2000);
