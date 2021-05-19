@@ -9,7 +9,7 @@ const {PuppeteerBlocker} = adBlocker;
 const channels = [
     'channel/UCq22aK0t0mrOEq676Be4ezw',
     'channel/UC2fVSthyWxWSjsiEAHPzriQ',
-    'c/ChilledCow',
+    'c/LofiGirl',
 ];
 const channelUrlTemplate = 'https://www.youtube.com/${channel}/videos';
 
