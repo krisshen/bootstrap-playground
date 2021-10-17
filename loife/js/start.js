@@ -131,6 +131,9 @@ async function run() {
             // skip Live streams as puppeteer doesn't support it at the moment
             if (await isLiveStream(thumbnailImgUrl)) continue;
 
+            // ignore empty element
+            if (thumbnailImgUrl === '') continue;
+
             count += 1
             await downloadThumbnail(thumbnailImgUrl, channelId, count);
 
