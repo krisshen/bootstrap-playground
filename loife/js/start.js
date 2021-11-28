@@ -54,7 +54,7 @@ async function skipAds(page) {
     skipAdsButton = await page.$(skipAdsButtonSelector);
     if (skipAdsButton !== null) {
         // console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
-        await page.waitForTimeout(7000);
+        await page.waitForTimeout(20000);
         skipAdsButton.click();
         // console.log(`button clicked.`);
         await page.waitForTimeout(2000);
