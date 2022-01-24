@@ -21,6 +21,7 @@ const videoEmbedUrlTemplate = 'https://www.youtube.com/embed/${videoUrlId}';
 let thumbnailImgUrl
 let channelUrl
 let data = "let videos = {\n";
+const DEBUG = false;
 
 const download = async (url, path, callback) => {
     request.head(url, (err, res, body) => {
@@ -47,19 +48,30 @@ async function downloadThumbnail(thumbnailImgUrl, channelId, thumbnailId) {
 }
 
 async function skipAds(page) {
-    let skipAdsButtonSelector = '.ytp-ad-skip-button.ytp-button';
-    let skipAdsButton;
-
     await page.waitForTimeout(1000);
-    skipAdsButton = await page.$(skipAdsButtonSelector);
+
+    // this is the ad with text 'video will play after ads'
+    // when it comes, wait for adsPreviewText to disappear
+    // then a second ad will be shown for 5 seconds
+    // then skip ads button is shown/available
+    let adsPreviewText = await page.$('.ytp-ad-preview-text');
+    if (adsPreviewText) {
+        DEBUG && console.log('wait for ads video to complete...');
+        await page.waitForSelector('.ytp-ad-preview-text', {hidden: true});
+        DEBUG && console.log('wait for the 2nd ads for 5s')
+        await page.waitForTimeout(5000); // wait for 2nd ads for 5s
+    }
+    
+    let skipAdsButtonSelector = '.ytp-ad-skip-button.ytp-button';
+    let skipAdsButton = await page.$(skipAdsButtonSelector);
     if (skipAdsButton !== null) {
-        // console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
-        await page.waitForTimeout(7000);
+        DEBUG && console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
+        await page.waitForTimeout(2000);
         skipAdsButton.click();
-        // console.log(`button clicked.`);
+        DEBUG && console.log(`button clicked.`);
         await page.waitForTimeout(2000);
     } else {
-        // console.log(`didn't see button element: ${skipAdsButtonSelector}`)
+        DEBUG && console.log(`didn't see button element: ${skipAdsButtonSelector}`)
     }
 }
 
@@ -103,7 +115,7 @@ async function run() {
 
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox',],
-        // headless: false
+        headless: !DEBUG
     })
     console.log('start...')
     const page = await browser.newPage();
