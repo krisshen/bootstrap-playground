@@ -117,8 +117,8 @@ async function run() {
     const pathToExtension = `${__dirname}./loife/extension/AdBlock`;
     const browser = await puppeteer.launch({
         args: [
-            // '--no-sandbox',
-            // '--disable-setuid-sandbox',
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
             `--disable-extensions-except=${pathToExtension}`,
             `--load-extension=${pathToExtension}`,
         ],
