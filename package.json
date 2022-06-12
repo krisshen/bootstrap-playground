@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A place to get familiar with Bootstarp 4.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./loife/js/start.js",
     "start": "node ./loife/js/start.js"
   },
   "type": "module",
