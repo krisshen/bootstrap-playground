@@ -1,8 +1,13 @@
-import puppeteer from 'puppeteer';
-import fs from 'fs';
-import request from 'request';
-import adBlocker from '@cliqz/adblocker-puppeteer';
-import fetch from 'cross-fetch';
+// import puppeteer from 'puppeteer';
+// import fs from 'fs';
+// import request from 'request';
+// import adBlocker from '@cliqz/adblocker-puppeteer';
+// import fetch from 'cross-fetch';
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const request = require('request');
+const adBlocker = require('@cliqz/adblocker-puppeteer');
+const fetch = require('cross-fetch');
 
 const {PuppeteerBlocker} = adBlocker;
 

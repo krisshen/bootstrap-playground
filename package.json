@@ -6,7 +6,6 @@
     "test": "node ./loife/js/start.js",
     "start": "node ./loife/js/start.js"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/krisshen/bootstrap-playground.git"
