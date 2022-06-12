@@ -15,7 +15,9 @@ jobs:
         run: npm install
 
       - name: Update
-        run: npm run start
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: npm run start
 
       - uses: mikeal/publish-to-github-action@master
         env:
