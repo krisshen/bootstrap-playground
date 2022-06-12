@@ -122,6 +122,7 @@ async function run() {
             `--disable-extensions-except=${pathToExtension}`,
             `--load-extension=${pathToExtension}`,
         ],
+        executablePath: process.env.PUPPETEER_EXEC_PATH, // set by docker container
         headless: !DEBUG
     })
     console.log('start...')
