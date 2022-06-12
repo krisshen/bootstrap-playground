@@ -23,7 +23,7 @@ jobs:
         env:
           CI: 'true'
         with:
-          run: npm run start
+          args: npm run start
 
       - uses: mikeal/publish-to-github-action@master
         env:
