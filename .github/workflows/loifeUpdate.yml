@@ -20,8 +20,6 @@ jobs:
 
       - name: Update
         uses: mujo-code/puppeteer-headful@v2
-        env:
-          CI: 'true'
         with:
           args: npm run start
 
