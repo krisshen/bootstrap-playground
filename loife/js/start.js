@@ -21,7 +21,7 @@ const videoEmbedUrlTemplate = 'https://www.youtube.com/embed/${videoUrlId}';
 let thumbnailImgUrl
 let channelUrl
 let data = "let videos = {\n";
-const DEBUG = false;
+const DEBUG = true;
 
 const download = async (url, path, callback) => {
     request.head(url, (err, res, body) => {
@@ -113,13 +113,27 @@ async function isLiveStream(thumbnailImgUrl) {
 
 async function run() {
 
+    let __dirname = fs.realpathSync('.');
+    const pathToExtension = `${__dirname}./loife/extension/AdBlock`;
     const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox',],
+        args: [
+            // '--no-sandbox',
+            // '--disable-setuid-sandbox',
+            `--disable-extensions-except=${pathToExtension}`,
+            `--load-extension=${pathToExtension}`,
+        ],
         headless: !DEBUG
     })
     console.log('start...')
-    const page = await browser.newPage();
+    const [page] = await browser.pages();
     await page.setViewport({width: 1920, height: 1080})
+    const extTarget = await browser.waitForTarget(target => {
+        console.log(`new page url? ${target.url()}`);
+        return target.url().includes('getadblock.com');
+    });
+    const extPage = await extTarget.page();
+    await extPage.waitForSelector('span[i18n="install_ty"]', {visible: true}); // wait for AdBlock ext to complete install
+    await extPage.close();
 
     PuppeteerBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
         blocker.enableBlockingInPage(page);
