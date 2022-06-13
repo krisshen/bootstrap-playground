@@ -13,7 +13,7 @@ jobs:
       with:
         args: install
     - name: Test Code
-      uses: mujo-code/puppeteer-headful@v2
+      uses: beemi/puppeteer-headful@master
       env:
         CI: 'true'
       with:
