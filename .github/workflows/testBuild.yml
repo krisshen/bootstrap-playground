@@ -6,12 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    
     - name: Install Dependencies
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       env:
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
-      with:
-        args: install
+    - run: npm ci
+
     - name: Test Code
       uses: mujo-code/puppeteer-headful@12.3.1
       env:
