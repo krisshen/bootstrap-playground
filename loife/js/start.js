@@ -122,8 +122,8 @@ async function run() {
     const pathToExtension = `${__dirname}./loife/extension/AdBlock`;
     const browser = await puppeteer.launch({
         args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
+            // '--no-sandbox',
+            // '--disable-setuid-sandbox',
             `--disable-extensions-except=${pathToExtension}`,
             `--load-extension=${pathToExtension}`,
         ],
@@ -132,7 +132,7 @@ async function run() {
     })
     console.log('start...')
     const [page] = await browser.pages();
-    await page.setViewport({width: 1920, height: 1080})
+    await page.setViewport({width: 1920, height: 1080});
     const extTarget = await browser.waitForTarget(target => {
         console.log(`new page url? ${target.url()}`);
         return target.url().includes('getadblock.com');
