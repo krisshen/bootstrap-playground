@@ -10,6 +10,7 @@ jobs:
       uses: actions/setup-node@v3
       env:
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+    - run: npm ci
     - name: Test Code
       uses: beemi/puppeteer-headful@master
       env:
