@@ -12,7 +12,7 @@ jobs:
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
     - run: npm ci
     - name: Test Code
-      uses: beemi/puppeteer-headful@master
+      uses: mujo-code/puppeteer-headful@v2
       env:
         CI: 'true'
       with:
