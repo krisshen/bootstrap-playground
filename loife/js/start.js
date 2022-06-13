@@ -128,7 +128,7 @@ async function run() {
             `--load-extension=${pathToExtension}`,
         ],
         executablePath: process.env.PUPPETEER_EXEC_PATH, // set by docker container
-        headless: !DEBUG
+        headless: 'chrome'
     })
     console.log('start...')
     const [page] = await browser.pages();
