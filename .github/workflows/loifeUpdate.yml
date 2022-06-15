@@ -1,28 +1,22 @@
 name: Loife Update
 
-on:
+on: 
+  push:
   schedule:
-    - cron:  '0 8 * * 1' # every Monday at 8am
+    - cron:  '0 8 1,15 * *' # 1st and 15th of each month
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2.3.2
       
-      - name: Install Dependencies
-        uses: actions/setup-node@v3
-        env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
-      - run: npm ci
+      - name: Build
+        run: npm install
 
       - name: Update
-        uses: mujo-code/puppeteer-headful@v2
-        env:
-          CI: 'true'
-        with:
-          args: npm start
+        run: npm run start
 
       - uses: mikeal/publish-to-github-action@master
         env:

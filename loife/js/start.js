@@ -26,7 +26,7 @@ const videoEmbedUrlTemplate = 'https://www.youtube.com/embed/${videoUrlId}';
 let thumbnailImgUrl
 let channelUrl
 let data = "let videos = {\n";
-const DEBUG = true;
+const DEBUG = false;
 
 const download = async (url, path, callback) => {
     request.head(url, (err, res, body) => {
@@ -55,28 +55,28 @@ async function downloadThumbnail(thumbnailImgUrl, channelId, thumbnailId) {
 async function skipAds(page) {
     await page.waitForTimeout(1000);
 
-    // this is the ad with text 'video will play after ads'
-    // when it comes, wait for adsPreviewText to disappear
-    // then a second ad will be shown for 5 seconds
-    // then skip ads button is shown/available
-    let adsPreviewText = await page.$('.ytp-ad-preview-text');
-    if (adsPreviewText) {
-        DEBUG && console.log('wait for ads video to complete...');
-        await page.waitForSelector('.ytp-ad-preview-text', {hidden: true});
-        DEBUG && console.log('wait for the 2nd ads for 5s')
-        await page.waitForTimeout(5000); // wait for 2nd ads for 5s
-    }
-    
+    let bottomLeftAdText = await page.$('.ytp-ad-simple-ad-badge');
     let skipAdsButtonSelector = '.ytp-ad-skip-button.ytp-button';
-    let skipAdsButton = await page.$(skipAdsButtonSelector);
-    if (skipAdsButton !== null) {
-        DEBUG && console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
-        await page.waitForTimeout(2000);
-        skipAdsButton.click();
-        DEBUG && console.log(`button clicked.`);
-        await page.waitForTimeout(2000);
-    } else {
-        DEBUG && console.log(`didn't see button element: ${skipAdsButtonSelector}`)
+    // when bottom left ads button exists, wait for skip ads button to show and click
+    while (bottomLeftAdText) {
+        let skipAdsButton = await page.$(skipAdsButtonSelector);
+        if (skipAdsButton !== null) {
+            DEBUG && console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
+            await page.waitForTimeout(2000);
+            await page.waitForSelector(skipAdsButtonSelector, {visible: true});
+            let text = await (await skipAdsButton.getProperty('textContent')).jsonValue()
+            DEBUG && console.log(`button text: ${text}`);
+            skipAdsButton.click();
+            DEBUG && console.log(`button clicked.`);
+            await page.waitForTimeout(2000);
+            DEBUG && console.log(`break!!!`);
+            break;
+        } else {
+            DEBUG && console.log(`didn't see button element yet: ${skipAdsButtonSelector}`);
+            DEBUG && console.log(`wait for 2s`);
+            await page.waitForTimeout(2000);
+            bottomLeftAdText = await page.$('.ytp-ad-simple-ad-badge');
+        }
     }
 }
 
@@ -119,27 +119,27 @@ async function isLiveStream(thumbnailImgUrl) {
 async function run() {
 
     let __dirname = fs.realpathSync('.');
-    const pathToExtension = `${__dirname}./loife/extension/AdBlock`;
+    // const pathToExtension = `${__dirname}./loife/extension/AdBlock`;
     const browser = await puppeteer.launch({
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            `--disable-extensions-except=${pathToExtension}`,
-            `--load-extension=${pathToExtension}`,
+            // `--disable-extensions-except=${pathToExtension}`,
+            // `--load-extension=${pathToExtension}`,
         ],
-        executablePath: process.env.PUPPETEER_EXEC_PATH, // set by docker container
-        headless: !DEBUG
+        // executablePath: process.env.PUPPETEER_EXEC_PATH, // set by docker container
+        headless: true
     })
     console.log('start...')
     const [page] = await browser.pages();
-    await page.setViewport({width: 1920, height: 1080})
-    const extTarget = await browser.waitForTarget(target => {
-        console.log(`new page url? ${target.url()}`);
-        return target.url().includes('getadblock.com');
-    });
-    const extPage = await extTarget.page();
-    await extPage.waitForSelector('span[i18n="install_ty"]', {visible: true}); // wait for AdBlock ext to complete install
-    await extPage.close();
+    await page.setViewport({width: 1920, height: 1080});
+    // const extTarget = await browser.waitForTarget(target => {
+    //     console.log(`new page url? ${target.url()}`);
+    //     return target.url().includes('getadblock.com');
+    // });
+    // const extPage = await extTarget.page();
+    // await extPage.waitForSelector('span[i18n="install_ty"]', {visible: true}); // wait for AdBlock ext to complete install
+    // await extPage.close();
 
     PuppeteerBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
         blocker.enableBlockingInPage(page);
