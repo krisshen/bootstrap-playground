@@ -1,7 +1,10 @@
 name: Loife Update
 
 on: 
-  push
+  push:
+  schedule:
+    - cron:  '0 8 1,15 * *' # 1st and 15th of each month
+  workflow_dispatch:
 
 jobs:
   build:
