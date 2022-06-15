@@ -26,7 +26,7 @@ const videoEmbedUrlTemplate = 'https://www.youtube.com/embed/${videoUrlId}';
 let thumbnailImgUrl
 let channelUrl
 let data = "let videos = {\n";
-const DEBUG = true;
+const DEBUG = false;
 
 const download = async (url, path, callback) => {
     request.head(url, (err, res, body) => {
@@ -57,6 +57,7 @@ async function skipAds(page) {
 
     let bottomLeftAdText = await page.$('.ytp-ad-simple-ad-badge');
     let skipAdsButtonSelector = '.ytp-ad-skip-button.ytp-button';
+    // when bottom left ads button exists, wait for skip ads button to show and click
     while (bottomLeftAdText) {
         let skipAdsButton = await page.$(skipAdsButtonSelector);
         if (skipAdsButton !== null) {
@@ -77,29 +78,6 @@ async function skipAds(page) {
             bottomLeftAdText = await page.$('.ytp-ad-simple-ad-badge');
         }
     }
-    // this is the ad with text 'video will play after ads'
-    // when it comes, wait for adsPreviewText to disappear
-    // then a second ad will be shown for 5 seconds
-    // then skip ads button is shown/available
-    // let adsPreviewText = await page.$('.ytp-ad-preview-text');
-    // if (adsPreviewText) {
-    //     DEBUG && console.log('wait for ads video to complete...');
-    //     await page.waitForSelector('.ytp-ad-preview-text', {hidden: true});
-    //     DEBUG && console.log('wait for the 2nd ads for 5s')
-    //     await page.waitForTimeout(5000); // wait for 2nd ads for 5s
-    // }
-    
-    // let skipAdsButtonSelector = '.ytp-ad-skip-button.ytp-button';
-    // let skipAdsButton = await page.$(skipAdsButtonSelector);
-    // if (skipAdsButton !== null) {
-    //     DEBUG && console.log(`found skip ads button element by class ${skipAdsButtonSelector}.`);
-    //     await page.waitForTimeout(2000);
-    //     skipAdsButton.click();
-    //     DEBUG && console.log(`button clicked.`);
-    //     await page.waitForTimeout(2000);
-    // } else {
-    //     DEBUG && console.log(`didn't see button element: ${skipAdsButtonSelector}`)
-    // }
 }
 
 async function downloadFullImage(page, videoUrlId, channelId, videoId) {
