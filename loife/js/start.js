@@ -11,11 +11,14 @@ const fetch = require('cross-fetch');
 
 const {PuppeteerBlocker} = adBlocker;
 
-const channels = [
-    'channel/UCq22aK0t0mrOEq676Be4ezw',
-    'channel/UC2fVSthyWxWSjsiEAHPzriQ',
-    'c/LofiGirl',
-];
+// const channels = [
+//     'channel/UCq22aK0t0mrOEq676Be4ezw',
+//     'channel/UC2fVSthyWxWSjsiEAHPzriQ',
+//     'c/LofiGirl',
+// ];
+
+// set max channel to 3 for now
+const channels = JSON.parse(fs.readFileSync('./loife/data/channels.json')).slice(0, 3);
 const channelUrlTemplate = 'https://www.youtube.com/${channel}/videos';
 
 const videosPerChannel = 20;
@@ -148,7 +151,7 @@ async function run() {
     let channelId = 1;
     for (const channel of channels) {
         let videoUrlIds = [];
-        channelUrl = channelUrlTemplate.replace('${channel}', channel);
+        channelUrl = channelUrlTemplate.replace('${channel}', channel.url);
         console.log(`checking at channel: ${channelUrl}`);
         await page.goto(channelUrl, {waitUntil: 'networkidle2'});
         // await page.screenshot({path: 'test.jpeg'});
