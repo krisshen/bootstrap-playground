@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A place to get familiar with Bootstarp 4.",
   "scripts": {
-    "test": "node ./loife/js/start.js",
-    "start": "node ./loife/js/start.js"
+    "test": "node ./loife-vue/scripts/start.js",
+    "start": "node ./loife-vue/scripts/start.js"
   },
   "repository": {
     "type": "git",
