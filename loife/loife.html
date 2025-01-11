@@ -4,15 +4,19 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Security headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src https://www.youtube.com">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <!-- Other CSS   -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/fixed.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/loife.css">
-    <!--    <link rel="stylesheet" href="css/font-awesome-5.14.0-all.min.css">-->
-    <script src="../js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/fixed.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/loife.css">
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <script src="./js/utils.js"></script>
     <script src="js/loife.js"></script>
     <script src="data/loife_videos.js"></script>
     <title>Welcome to Loife!</title>
@@ -21,80 +25,77 @@
 
 <div>
     <div class="cards-container">
-
         <!-- for changing background image -->
         <div class="landing home-wrap landing-inner"></div>
 
         <div class="row d-flex justify-content-center">
-            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal">
+            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal" tabindex="0" role="button">
                 <div class="image-box">
-                    <img class="card-img-top" src="" alt="Card image cap">
+                    <img class="card-img-top" src="" alt="Video thumbnail" loading="lazy">
                 </div>
             </div>
-            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal">
+            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal" tabindex="0" role="button">
                 <div class="image-box">
-                    <img class="card-img-top" src="" alt="Card image cap">
-                </div>
-            </div>
-        </div>
-
-        <div class="row d-flex justify-content-center">
-            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal">
-                <div class="image-box">
-                    <img class="card-img-top" src="" alt="Card image cap">
-                </div>
-            </div>
-            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal">
-                <div class="image-box">
-                    <img class="card-img-top" src="" alt="Card image cap">
+                    <img class="card-img-top" src="" alt="Video thumbnail" loading="lazy">
                 </div>
             </div>
         </div>
 
         <div class="row d-flex justify-content-center">
-            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal">
+            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal" tabindex="0" role="button">
                 <div class="image-box">
-                    <img class="card-img-top" src="" alt="Card image cap">
+                    <img class="card-img-top" src="" alt="Video thumbnail" loading="lazy">
                 </div>
             </div>
-            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal">
+            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal" tabindex="0" role="button">
                 <div class="image-box">
-                    <img class="card-img-top" src="" alt="Card image cap">
+                    <img class="card-img-top" src="" alt="Video thumbnail" loading="lazy">
                 </div>
             </div>
         </div>
 
         <div class="row d-flex justify-content-center">
-            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal">
+            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal" tabindex="0" role="button">
                 <div class="image-box">
-                    <img class="card-img-top" src="" alt="Card image cap">
+                    <img class="card-img-top" src="" alt="Video thumbnail" loading="lazy">
                 </div>
             </div>
-            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal">
+            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal" tabindex="0" role="button">
                 <div class="image-box">
-                    <img class="card-img-top" src="" alt="Card image cap">
+                    <img class="card-img-top" src="" alt="Video thumbnail" loading="lazy">
                 </div>
             </div>
         </div>
 
+        <div class="row d-flex justify-content-center">
+            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal" tabindex="0" role="button">
+                <div class="image-box">
+                    <img class="card-img-top" src="" alt="Video thumbnail" loading="lazy">
+                </div>
+            </div>
+            <div class="card card-flyer loife" data-toggle="modal" data-target="#videoModal" tabindex="0" role="button">
+                <div class="image-box">
+                    <img class="card-img-top" src="" alt="Video thumbnail" loading="lazy">
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--  Video Modal-->
-    <div class="modal fade" id="videoModal" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="videoModal" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <iframe id="videoIframe" width=100% height=100% frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                            allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-
-<script src="../js/popper-1.16.1.min.js"></script>
-<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>-->
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/font-awesome-5.14.0-all.js"></script>
+<script src="./js/popper-1.16.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/font-awesome-5.14.0-all.js"></script>
 </body>
 </html>

@@ -38,13 +38,18 @@ $(document).ready(function () {
     // get each loife element and set id, thumbnail and hover images
     let loifeElements = $(".loife")
     loifeElements.each(function (i) {
-        this.id = imageIds[i];
-        this.querySelector('img').src = `img/thumbnail/${imageIds[i]}.jpeg`;
+        const imageId = imageIds[i];
+        if (!window.loifeUtils.validateImageId(imageId)) {
+            console.error('Invalid image ID:', imageId);
+            return;
+        }
+        this.id = imageId;
+        this.querySelector('img').src = `img/thumbnail/${imageId}.jpeg`;
 
-        // preload images
-        // reference: https://stackoverflow.com/questions/3646036/preloading-images-with-javascript
-        let url = `img/full/${imageIds[i]}.jpeg`;
+        // preload images with error handling
+        let url = `img/full/${imageId}.jpeg`;
         let img = new Image();
+        img.onerror = () => console.error(`Failed to load image: ${url}`);
         img.src = url;
 
         $(this).hover(() => {
@@ -55,12 +60,19 @@ $(document).ready(function () {
     let modal = $('.modal');
 
     modal.on('hide.bs.modal', function () {
-        // let memory = $(this).html();
-        // $(this).html(memory);
         $("#videoIframe").attr('src', '');
     })
 
     modal.on('show.bs.modal', function (e) {
-        $("#videoIframe").attr('src', videos[`${e.relatedTarget.id}`]);
+        const videoId = e.relatedTarget.id;
+        const videoUrl = videos[videoId];
+        const sanitizedUrl = window.loifeUtils.sanitizeVideoUrl(videoUrl);
+        
+        if (!sanitizedUrl) {
+            console.error('Invalid video URL for ID:', videoId);
+            return;
+        }
+        
+        $("#videoIframe").attr('src', sanitizedUrl);
     })
 });

@@ -1,0 +1,69 @@
+@function getLoifeImageFullPath($imageId) {
+  $loife_img_path: "../loife/img/";
+
+  @return $loife_img_path + "loife" + $imageId + ".jpeg";
+}
+
+.cards-container {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  margin: 10px;
+  z-index: 1;
+  color: lightblue;
+  text-transform: uppercase;
+}
+
+.landing-inner {
+  position: fixed;
+  display: table;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.1;
+  transition: all .9s ease-in-out;
+  -webkit-transition: all .9s ease-in-out;
+  -moz-transition: all .9s ease-in-out;
+  -o-transition: all .9s ease-in-out;
+  -ms-transition: all .9s ease-in-out;
+  background-image: url("../loife/img/background.jpeg");
+}
+
+.card {
+  margin: 10px;
+}
+
+//@mixin loifeHover($loifeCLass, $imageFullPath) {
+//  .loife#{$loifeCLass}:hover ~ .landing-inner {
+//    opacity: 1;
+//    transition: all .9s ease-in-out;
+//    -webkit-transition: all .9s ease-in-out;
+//    -moz-transition: all .9s ease-in-out;
+//    -o-transition: all .9s ease-in-out;
+//    -ms-transition: all .9s ease-in-out;
+//    content: attr(id);
+//    background-image: url($imageFullPath);
+//    background-size: 100vh 100vm;
+//  }
+//}
+//
+//@for $i from 1 through 8 {
+//  @include loifeHover($i, getLoifeImageFullPath($i));
+//}
+
+.landing-inner {
+  opacity: 1;
+  transition: all .9s ease-in-out;
+  -webkit-transition: all .9s ease-in-out;
+  -moz-transition: all .9s ease-in-out;
+  -o-transition: all .9s ease-in-out;
+  -ms-transition: all .9s ease-in-out;
+  background-size: 100vh 100vm;
+}
+
+.modal-content {
+  height: 60vh;
+}
