@@ -12,6 +12,7 @@ const projectRoot = path.join(__dirname, '..');
 // Configuration
 const CONFIG = {
     VIDEOS_PER_CHANNEL: 20,
+    VIDEOS_DEFAULT_LOADED: 12,
     MAX_RETRIES: 3,
     INITIAL_WAIT_MS: 5000,
     VIDEO_LOAD_TIMEOUT: 15000,
@@ -263,9 +264,15 @@ async function run() {
                 try {
                     const thumbnailImgUrl = await thumbnail.$eval('img', img => img.src).catch(() => '');
 
-                    if (!thumbnailImgUrl || await isLiveStream(thumbnailImgUrl)) continue;
+                    if (!thumbnailImgUrl || await isLiveStream(thumbnailImgUrl)) continue;                    
 
                     count += 1;
+                    
+                    // hover on the 12th thumbnail to load more
+                    if (count === CONFIG.VIDEOS_DEFAULT_LOADED) {
+                        await thumbnail.hover();
+                    }
+
                     await downloadThumbnail(thumbnailImgUrl, channelId, count);
                     videoUrlIds.push(getVideoUrlId(thumbnailImgUrl));
 
